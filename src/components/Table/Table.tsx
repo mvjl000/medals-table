@@ -50,7 +50,7 @@ const Table: FC = () => {
           const medalsSum = golden + silver + bronze;
 
           return (
-            <tr>
+            <tr key={country}>
               <td>{country}</td>
               <td>{golden}</td>
               <td>{silver}</td>
