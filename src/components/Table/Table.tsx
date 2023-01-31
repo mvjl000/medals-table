@@ -1,37 +1,14 @@
 import { FC } from "react";
+import { useSelector } from "react-redux";
 import StMedal from "../../assets/1st-place-medal.svg";
 import NdMedal from "../../assets/2nd-place-medal.svg";
 import RdMedal from "../../assets/3rd-place-medal.svg";
+import { RootState } from "../../store/store";
 import "./Table.scss";
 
-const MOCK_DATA = [
-  {
-    country: "Poland",
-    golden: 1,
-    silver: 5,
-    bronze: 8,
-  },
-  {
-    country: "Germany",
-    golden: 4,
-    silver: 2,
-    bronze: 1,
-  },
-  {
-    country: "england",
-    golden: 3,
-    silver: 4,
-    bronze: 4,
-  },
-  {
-    country: "Spain",
-    golden: 2,
-    silver: 8,
-    bronze: 3,
-  },
-];
-
 const Table: FC = () => {
+  const countries = useSelector((state: RootState) => state.table.countries);
+
   return (
     <table className="table">
       <thead className="table-head">
@@ -69,7 +46,7 @@ const Table: FC = () => {
         </tr>
       </thead>
       <tbody className="table-body">
-        {MOCK_DATA.map(({ country, golden, silver, bronze }) => {
+        {countries.map(({ country, golden, silver, bronze }) => {
           const medalsSum = golden + silver + bronze;
 
           return (
