@@ -1,9 +1,11 @@
+@use "./variables" as theme;
+
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 10px;
   font-weight: 400;
-  color: #131313;
-  background-color: #ffffff;
+  color: theme.$black;
+  background-color: theme.$white;
 }
 
 * {

@@ -10,3 +10,9 @@ header {
     margin: 0;
   }
 }
+
+main {
+  height: calc(100vh - 8rem);
+  display: grid;
+  place-items: center;
+}
