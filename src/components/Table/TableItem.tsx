@@ -1,13 +1,15 @@
 import { FC, useMemo } from "react";
-import { Country } from "../../store/tableSlice";
+import { useDispatch } from "react-redux";
+import { Country, removeCountry } from "../../store/tableSlice";
 
 const TableItem: FC<{ data: Country }> = ({ data }) => {
   const { golden, silver, bronze } = data;
 
   const medalsSum = useMemo(() => golden + silver + bronze, []);
+  const dispatch = useDispatch();
 
   const handleButtonClick = (id: string) => {
-    console.log(id);
+    dispatch(removeCountry({ id }));
   };
 
   return (

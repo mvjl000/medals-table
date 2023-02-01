@@ -68,9 +68,14 @@ export const tableSlice = createSlice({
         id: uuidv4(),
       });
     },
+    removeCountry: (state, action: PayloadAction<{ id: string }>) => {
+      state.countries = state.countries.filter(
+        (country) => country.id !== action.payload.id
+      );
+    },
   },
 });
 
-export const { addCountry } = tableSlice.actions;
+export const { addCountry, removeCountry } = tableSlice.actions;
 
 export default tableSlice.reducer;
