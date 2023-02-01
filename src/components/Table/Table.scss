@@ -78,4 +78,8 @@
       font-weight: 300;
     }
   }
+
+  & > tr.message-row {
+    height: 10rem;
+  }
 }

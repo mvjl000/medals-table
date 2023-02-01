@@ -1,15 +1,11 @@
 import { FC } from "react";
-import { useSelector } from "react-redux";
 import StMedal from "../../assets/1st-place-medal.svg";
 import NdMedal from "../../assets/2nd-place-medal.svg";
 import RdMedal from "../../assets/3rd-place-medal.svg";
-import { RootState } from "../../store/store";
 import "./Table.scss";
-import TableItem from "./TableItem";
+import TableBody from "./TableBody";
 
 const Table: FC = () => {
-  const countries = useSelector((state: RootState) => state.table.countries);
-
   return (
     <table className="table">
       <thead className="table-head">
@@ -46,11 +42,7 @@ const Table: FC = () => {
           </th>
         </tr>
       </thead>
-      <tbody className="table-body">
-        {countries.map((country) => (
-          <TableItem key={country.id} data={country} />
-        ))}
-      </tbody>
+      <TableBody />
     </table>
   );
 };
