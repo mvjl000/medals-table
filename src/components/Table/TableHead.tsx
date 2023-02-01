@@ -5,6 +5,8 @@ import { changeOrdering, Country } from "../../store/tableSlice";
 import StMedal from "../../assets/1st-place-medal.svg";
 import NdMedal from "../../assets/2nd-place-medal.svg";
 import RdMedal from "../../assets/3rd-place-medal.svg";
+import ArrowUp from "../../assets/arrow-up.svg";
+import ArrowDown from "../../assets/arrow-down.svg";
 
 interface ColumnImage {
   src: string;
@@ -104,7 +106,9 @@ const TableHead: FC = () => {
               col.name
             )}
             {ordering.key === col.key ? (
-              <div className="ordering-info">{ordering.type}</div>
+              <div className="ordering-info">
+                <img src={ordering.type === "dsc" ? ArrowDown : ArrowUp} />
+              </div>
             ) : null}
           </th>
         ))}
