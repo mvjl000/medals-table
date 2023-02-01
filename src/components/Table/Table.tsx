@@ -5,6 +5,7 @@ import NdMedal from "../../assets/2nd-place-medal.svg";
 import RdMedal from "../../assets/3rd-place-medal.svg";
 import { RootState } from "../../store/store";
 import "./Table.scss";
+import TableItem from "./TableItem";
 
 const Table: FC = () => {
   const countries = useSelector((state: RootState) => state.table.countries);
@@ -46,28 +47,9 @@ const Table: FC = () => {
         </tr>
       </thead>
       <tbody className="table-body">
-        {countries.map(({ id, country, golden, silver, bronze }) => {
-          const medalsSum = golden + silver + bronze;
-
-          return (
-            <tr key={id}>
-              <td>{country}</td>
-              <td>{golden}</td>
-              <td>{silver}</td>
-              <td>{bronze}</td>
-              <td>{medalsSum}</td>
-              <td>
-                <button
-                  className="row-button"
-                  type="button"
-                  aria-label="Action button"
-                >
-                  X
-                </button>
-              </td>
-            </tr>
-          );
-        })}
+        {countries.map((country) => (
+          <TableItem key={country.id} data={country} />
+        ))}
       </tbody>
     </table>
   );
