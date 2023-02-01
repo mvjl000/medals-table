@@ -25,7 +25,8 @@ const TableBody: FC = () => {
     // Default olympic ordering
     // Takes into account the hierarchy of medals
     // gold > silver > bronze
-    // e.g. - one gold medal is worth more than any number of silver and bronze medals combined
+    // e.g. - one gold medal is worth more
+    // than any number of silver and bronze medals combined
     if (orderingKey === "default") {
       if (b.golden - a.golden > 0) return 1;
       if (b.golden - a.golden < 0) return -1;
