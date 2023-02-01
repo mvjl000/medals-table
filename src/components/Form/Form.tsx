@@ -32,7 +32,7 @@ const CountryForm: FC = () => {
       <Formik
         initialValues={initialValues}
         validationSchema={FormSchema}
-        onSubmit={(values) => {
+        onSubmit={(values, { resetForm }) => {
           const formattedValues = {
             ...values,
             golden: Number(values.golden),
@@ -41,6 +41,7 @@ const CountryForm: FC = () => {
           };
 
           dispatch(addCountry(formattedValues));
+          resetForm();
         }}
       >
         {({ values, handleChange }) => (
