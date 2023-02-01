@@ -23,8 +23,22 @@ const TableBody: FC = () => {
     const orderingKey = ordering.key;
 
     // Default olympic ordering
+    // Takes into account the hierarchy of medals
+    // gold > silver > bronze
+    // e.g. - one gold medal is worth more than any number of silver and bronze medals combined
     if (orderingKey === "default") {
-      return ordering.type === "asc" ? a.total - b.total : b.total - a.total;
+      if (b.golden - a.golden > 0) return 1;
+      if (b.golden - a.golden < 0) return -1;
+      if (b.golden - a.golden === 0) {
+        if (b.silver - a.silver > 0) return 1;
+        if (b.silver - a.silver < 0) return -1;
+        if (b.silver - a.silver === 0) {
+          if (b.bronze - a.bronze > 0) return 1;
+          if (b.bronze - a.bronze < 0) return -1;
+          return 0;
+        }
+      }
+      return 0;
     }
 
     // Alphabetical ordering
