@@ -27,7 +27,7 @@ const CountryForm: FC = () => {
   return (
     <div className="form-wrapper">
       <div className="title-wrapper">
-        <p>Add country</p>
+        <p>Add a country</p>
       </div>
       <Formik
         initialValues={initialValues}
@@ -44,32 +44,50 @@ const CountryForm: FC = () => {
         }}
       >
         {({ values, handleChange }) => (
-          <Form>
-            <input
-              name="country"
-              value={values.country}
-              onChange={handleChange}
-              placeholder="Poland"
-            />
-            <input
-              name="golden"
-              value={values.golden}
-              onChange={handleChange}
-              placeholder="0"
-            />
-            <input
-              name="silver"
-              value={values.silver}
-              onChange={handleChange}
-              placeholder="0"
-            />
-            <input
-              name="bronze"
-              value={values.bronze}
-              onChange={handleChange}
-              placeholder="0"
-            />
-            <button type="submit">Add</button>
+          <Form className="form">
+            <div className="input-wrapper">
+              <label htmlFor="country-input">Country name</label>
+              <input
+                id="country-input"
+                name="country"
+                value={values.country}
+                onChange={handleChange}
+                placeholder="Poland"
+              />
+            </div>
+            <div className="medals-inputs-wrapper">
+              <div className="input-wrapper">
+                <label htmlFor="golden-medals-input">Golden</label>
+                <input
+                  id="golden-medals-input"
+                  name="golden"
+                  value={values.golden}
+                  onChange={handleChange}
+                  placeholder="0"
+                />
+              </div>
+              <div className="input-wrapper">
+                <label htmlFor="silver-medals-input">Silver</label>
+                <input
+                  id="silver-medals-input"
+                  name="silver"
+                  value={values.silver}
+                  onChange={handleChange}
+                  placeholder="0"
+                />
+              </div>
+              <div className="input-wrapper">
+                <label htmlFor="bronze-medals-input">Bronze</label>
+                <input
+                  id="bronze-medals-input"
+                  name="bronze"
+                  value={values.bronze}
+                  onChange={handleChange}
+                  placeholder="0"
+                />
+              </div>
+            </div>
+            <button type="submit">ADD</button>
           </Form>
         )}
       </Formik>
