@@ -2,7 +2,7 @@ import { FC } from "react";
 import { useDispatch } from "react-redux";
 import { Country, removeCountry } from "../../store/tableSlice";
 
-const TableItem: FC<{ data: Country }> = ({ data }) => {
+const TableItem: FC<{ data: Country; index: number }> = ({ data, index }) => {
   const dispatch = useDispatch();
 
   const handleButtonClick = (id: string) => {
@@ -11,6 +11,7 @@ const TableItem: FC<{ data: Country }> = ({ data }) => {
 
   return (
     <tr>
+      <td>{index + 1}.</td>
       <td>{data.country}</td>
       <td>{data.golden}</td>
       <td>{data.silver}</td>

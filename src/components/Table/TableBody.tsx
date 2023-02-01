@@ -13,7 +13,7 @@ const TableBody: FC = () => {
     return (
       <tbody className="table-body">
         <tr className="message-row">
-          <td colSpan={5}>No data to display :(</td>
+          <td colSpan={6}>No data to display :(</td>
         </tr>
       </tbody>
     );
@@ -65,8 +65,8 @@ const TableBody: FC = () => {
 
   return (
     <tbody className="table-body">
-      {sortedCountries.map((country) => (
-        <TableItem key={country.id} data={country} />
+      {sortedCountries.map((country, index) => (
+        <TableItem key={country.id} data={country} index={index} />
       ))}
     </tbody>
   );

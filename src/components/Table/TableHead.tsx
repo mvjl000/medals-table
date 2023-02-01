@@ -96,7 +96,11 @@ const TableHead: FC = () => {
     <thead className="table-head">
       <tr>
         {columns.map((col) => (
-          <th key={col.key} onClick={() => handleChangeOrdering(col.key)}>
+          <th
+            key={col.key}
+            onClick={() => handleChangeOrdering(col.key)}
+            colSpan={col.key === "country" ? 2 : 1}
+          >
             {col.images !== undefined ? (
               <div
                 className={`${
