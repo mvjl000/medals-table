@@ -11,8 +11,14 @@ export interface Country {
   total: number;
 }
 
+interface Ordering {
+  key: keyof Omit<Country, "id"> | "default";
+  type: "asc" | "dsc";
+}
+
 export interface TableState {
   countries: Country[];
+  ordering: Ordering;
 }
 
 const initialState: TableState = {
@@ -58,6 +64,10 @@ const initialState: TableState = {
       total: 15,
     },
   ],
+  ordering: {
+    key: "default",
+    type: "dsc",
+  },
 };
 
 export const tableSlice = createSlice({
@@ -78,6 +88,9 @@ export const tableSlice = createSlice({
       state.countries = state.countries.filter(
         (country) => country.id !== action.payload.id
       );
+    },
+    changeOrdering: (state, action: PayloadAction<{ ordering: Ordering }>) => {
+      state.ordering = action.payload.ordering;
     },
   },
 });
