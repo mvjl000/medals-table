@@ -11,7 +11,7 @@ export interface Country {
   total: number;
 }
 
-interface Ordering {
+export interface Ordering {
   key: keyof Omit<Country, "id"> | "default";
   type: "asc" | "dsc";
 }

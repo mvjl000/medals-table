@@ -54,11 +54,31 @@ const TableHead: FC = () => {
   const dispatch = useDispatch();
 
   const handleChangeOrdering = (key: keyof Omit<Country, "id"> | "default") => {
-    dispatch(
+    if (ordering.key !== key)
+      return dispatch(
+        changeOrdering({
+          ordering: {
+            key,
+            type: "dsc",
+          },
+        })
+      );
+
+    if (ordering.type === "dsc")
+      return dispatch(
+        changeOrdering({
+          ordering: {
+            key,
+            type: "asc",
+          },
+        })
+      );
+
+    return dispatch(
       changeOrdering({
         ordering: {
-          key,
-          type: ordering.type === "asc" ? "dsc" : "asc",
+          key: "default",
+          type: "dsc",
         },
       })
     );
