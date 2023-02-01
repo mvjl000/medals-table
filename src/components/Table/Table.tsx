@@ -46,11 +46,11 @@ const Table: FC = () => {
         </tr>
       </thead>
       <tbody className="table-body">
-        {countries.map(({ country, golden, silver, bronze }) => {
+        {countries.map(({ id, country, golden, silver, bronze }) => {
           const medalsSum = golden + silver + bronze;
 
           return (
-            <tr key={country}>
+            <tr key={id}>
               <td>{country}</td>
               <td>{golden}</td>
               <td>{silver}</td>
