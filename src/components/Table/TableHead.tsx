@@ -83,6 +83,9 @@ const TableHead: FC = () => {
             ) : (
               col.name
             )}
+            {ordering.key === col.key ? (
+              <div className="ordering-info">{ordering.type}</div>
+            ) : null}
           </th>
         ))}
       </tr>
