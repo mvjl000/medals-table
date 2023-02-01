@@ -23,6 +23,7 @@
     font-size: 2rem;
     font-weight: 400;
     border: 1px solid theme.$black;
+    cursor: pointer;
 
     div:not(.total-medals-wrapper) {
       display: flex;

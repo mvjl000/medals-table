@@ -13,7 +13,7 @@ const TableBody: FC = () => {
     return (
       <tbody className="table-body">
         <tr className="message-row">
-          <td colSpan={6}>No data to display :(</td>
+          <td colSpan={5}>No data to display :(</td>
         </tr>
       </tbody>
     );

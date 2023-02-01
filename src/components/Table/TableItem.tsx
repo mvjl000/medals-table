@@ -16,7 +16,7 @@ const TableItem: FC<{ data: Country }> = ({ data }) => {
       <td>{data.silver}</td>
       <td>{data.bronze}</td>
       <td>{data.total}</td>
-      <td>
+      {/* <td>
         <button
           className="row-button"
           type="button"
@@ -25,7 +25,7 @@ const TableItem: FC<{ data: Country }> = ({ data }) => {
         >
           X
         </button>
-      </td>
+      </td> */}
     </tr>
   );
 };
