@@ -95,6 +95,6 @@ export const tableSlice = createSlice({
   },
 });
 
-export const { addCountry, removeCountry } = tableSlice.actions;
+export const { addCountry, removeCountry, changeOrdering } = tableSlice.actions;
 
 export default tableSlice.reducer;
