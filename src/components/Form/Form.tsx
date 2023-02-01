@@ -33,11 +33,16 @@ const CountryForm: FC = () => {
         initialValues={initialValues}
         validationSchema={FormSchema}
         onSubmit={(values, { resetForm }) => {
+          const golden = Number(values.golden);
+          const silver = Number(values.silver);
+          const bronze = Number(values.bronze);
+
           const formattedValues = {
             ...values,
-            golden: Number(values.golden),
-            silver: Number(values.silver),
-            bronze: Number(values.bronze),
+            golden,
+            silver,
+            bronze,
+            total: golden + silver + bronze,
           };
 
           dispatch(addCountry(formattedValues));

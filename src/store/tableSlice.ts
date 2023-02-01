@@ -8,6 +8,7 @@ export interface Country {
   golden: number;
   silver: number;
   bronze: number;
+  total: number;
 }
 
 export interface TableState {
@@ -22,6 +23,7 @@ const initialState: TableState = {
       golden: 1,
       silver: 5,
       bronze: 8,
+      total: 14,
     },
     {
       id: "c2",
@@ -29,6 +31,7 @@ const initialState: TableState = {
       golden: 4,
       silver: 2,
       bronze: 1,
+      total: 7,
     },
     {
       id: "c3",
@@ -36,6 +39,7 @@ const initialState: TableState = {
       golden: 3,
       silver: 4,
       bronze: 4,
+      total: 11,
     },
     {
       id: "c4",
@@ -43,6 +47,7 @@ const initialState: TableState = {
       golden: 2,
       silver: 8,
       bronze: 3,
+      total: 13,
     },
     {
       id: "c5",
@@ -50,6 +55,7 @@ const initialState: TableState = {
       golden: 3,
       silver: 4,
       bronze: 8,
+      total: 15,
     },
   ],
 };
