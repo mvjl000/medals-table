@@ -56,6 +56,8 @@ const TableHead: FC = () => {
   const dispatch = useDispatch();
 
   const handleChangeOrdering = (key: keyof Omit<Country, "id"> | "default") => {
+    // If user targets new column
+    // it sets ordering type to descending
     if (ordering.key !== key)
       return dispatch(
         changeOrdering({
@@ -65,7 +67,8 @@ const TableHead: FC = () => {
           },
         })
       );
-
+    // If user targets already sorted
+    // column, it sets ordering to ascending
     if (ordering.type === "dsc")
       return dispatch(
         changeOrdering({
@@ -76,6 +79,9 @@ const TableHead: FC = () => {
         })
       );
 
+    // At this point ordering is set
+    // to asc, so it sets it back to
+    // default olympic hierarchy
     return dispatch(
       changeOrdering({
         ordering: {
