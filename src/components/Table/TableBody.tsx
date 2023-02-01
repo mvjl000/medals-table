@@ -22,20 +22,23 @@ const TableBody: FC = () => {
   const orderingFn = (a: Country, b: Country) => {
     const orderingKey = ordering.key;
 
-    // Default olympic ordering
-    // Takes into account the hierarchy of medals
+    // Default olympic ordering.
+    // Takes into account the hierarchy of medals:
     // gold > silver > bronze
-    // e.g. - one gold medal is worth more
-    // than any number of silver and bronze medals combined
+    // E.g. - one gold medal is worth more
+    // than any number of silver and bronze medals combined.
     if (orderingKey === "default") {
       if (b.golden - a.golden > 0) return 1;
       if (b.golden - a.golden < 0) return -1;
       if (b.golden - a.golden === 0) {
+        // Same amout of gold medals. Compare silver.
         if (b.silver - a.silver > 0) return 1;
         if (b.silver - a.silver < 0) return -1;
         if (b.silver - a.silver === 0) {
+          // Same amount of silver medals. Compare bronze.
           if (b.bronze - a.bronze > 0) return 1;
           if (b.bronze - a.bronze < 0) return -1;
+          // Same amount of bronze. Item is equal.
           return 0;
         }
       }
