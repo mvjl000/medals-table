@@ -67,6 +67,9 @@
 .table-body {
   & > tr {
     height: 4rem;
+    &:nth-child(odd) {
+      background-color: darken(theme.$white, 4%);
+    }
 
     td {
       border: 1px solid theme.$black;
