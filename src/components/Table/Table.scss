@@ -132,3 +132,15 @@
     }
   }
 }
+
+.table-info {
+  width: 80%;
+  max-width: 1000px;
+  text-align: center;
+  font-size: 1.4rem;
+  color: lighten(theme.$black, 40%);
+
+  @media (min-width: 1024px) {
+    font-size: 1.8rem;
+  }
+}

@@ -30,6 +30,12 @@ const Table: FC = () => {
         <TableHead />
         <TableBody />
       </table>
+      <p className="table-info">
+        This table sorts items by default according to the medal hierarchy (gold{" "}
+        {">"} silver {">"} bronze), which means e.g. one gold medal is worth
+        more than any number of silver and bronze medals combined. Click on one
+        of column heads to change the sorting.
+      </p>
     </>
   );
 };
