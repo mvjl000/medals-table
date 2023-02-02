@@ -9,8 +9,15 @@ import {
   editCountry,
   removeCountry,
 } from "../../store/tableSlice";
+import * as Yup from "yup";
 import Input from "../Input/Input";
 import "./Modal.scss";
+
+const FormSchema = Yup.object().shape({
+  golden: Yup.number(),
+  silver: Yup.number(),
+  bronze: Yup.number(),
+});
 
 const customModalStyles = {
   content: {
@@ -55,6 +62,7 @@ const Modal: FC = () => {
               silver: clickedCountry.silver,
               bronze: clickedCountry.bronze,
             }}
+            validationSchema={FormSchema}
             onSubmit={(values) => {
               const golden = Number(values.golden);
               const silver = Number(values.silver);
@@ -73,7 +81,7 @@ const Modal: FC = () => {
               dispatch(closeModal());
             }}
           >
-            {({ values, handleChange }) => (
+            {({ values, handleChange, handleBlur, errors, touched }) => (
               <Form className="modal-form">
                 <div className="medals-inputs-wrapper">
                   <Input
@@ -82,7 +90,9 @@ const Modal: FC = () => {
                     name="golden"
                     value={values.golden}
                     handleChange={handleChange}
+                    handleBlur={handleBlur}
                     placeholder="0"
+                    error={errors.golden && "Numbers only!"}
                   />
                   <Input
                     id="silver-medals-input-modal"
@@ -90,7 +100,9 @@ const Modal: FC = () => {
                     name="silver"
                     value={values.silver}
                     handleChange={handleChange}
+                    handleBlur={handleBlur}
                     placeholder="0"
+                    error={errors.silver && "Numbers only!"}
                   />
                   <Input
                     id="bronze-medals-input-modal"
@@ -98,7 +110,9 @@ const Modal: FC = () => {
                     name="bronze"
                     value={values.bronze}
                     handleChange={handleChange}
+                    handleBlur={handleBlur}
                     placeholder="0"
+                    error={errors.bronze && "Numbers only!"}
                   />
                 </div>
                 <div className="modal-buttons-wrapper">
@@ -110,7 +124,14 @@ const Modal: FC = () => {
                   >
                     DELETE
                   </button>
-                  <button type="submit" aria-label="Save changes">
+                  <button
+                    type="submit"
+                    aria-label="Save changes"
+                    disabled={
+                      Object.entries(errors).length !== 0 ||
+                      Object.entries(touched).length === 0
+                    }
+                  >
                     SAVE
                   </button>
                 </div>

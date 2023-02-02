@@ -68,6 +68,14 @@
     &:focus-visible {
       letter-spacing: 1px;
     }
+
+    &:disabled {
+      background-color: darken(theme.$white, 5%);
+      border: none;
+      color: lighten(theme.$black, 40%);
+      letter-spacing: normal;
+      cursor: default;
+    }
   }
 }
 

@@ -15,6 +15,11 @@ interface InputProps {
       ? void
       : (e: string | React.ChangeEvent<any>) => void;
   };
+  handleBlur: {
+    (e: React.FocusEvent<any, Element>): void;
+    <T = any>(fieldOrEvent: T): T extends string ? (e: any) => void : void;
+  };
+  error: string | undefined;
 }
 
 const Input: FC<InputProps> = ({
@@ -24,6 +29,8 @@ const Input: FC<InputProps> = ({
   value,
   placeholder,
   handleChange,
+  handleBlur,
+  error,
 }) => {
   return (
     <div className="input-wrapper">
@@ -33,8 +40,10 @@ const Input: FC<InputProps> = ({
         name={name}
         value={value}
         onChange={handleChange}
+        onBlur={handleBlur}
         placeholder={placeholder}
       />
+      {!!error ? <p className="error-message">{error}</p> : null}
     </div>
   );
 };

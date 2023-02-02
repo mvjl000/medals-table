@@ -3,16 +3,16 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { addCountry } from "../../store/tableSlice";
-import "./AddCountry.scss";
 import Input from "../Input/Input";
+import "./AddCountry.scss";
 
 const FormSchema = Yup.object().shape({
   country: Yup.string()
     .min(3, "Too short!")
     .required("Country name is Required!"),
-  golden: Yup.string(),
-  silver: Yup.string(),
-  bronze: Yup.string(),
+  golden: Yup.number(),
+  silver: Yup.number(),
+  bronze: Yup.number(),
 });
 
 const initialValues = {
@@ -34,9 +34,9 @@ const AddCountry: FC = () => {
         initialValues={initialValues}
         validationSchema={FormSchema}
         onSubmit={(values, { resetForm }) => {
-          const golden = Number(values.golden);
-          const silver = Number(values.silver);
-          const bronze = Number(values.bronze);
+          const golden = Number(values.golden) || 0;
+          const silver = Number(values.silver) || 0;
+          const bronze = Number(values.bronze) || 0;
 
           const formattedValues = {
             ...values,
@@ -50,7 +50,7 @@ const AddCountry: FC = () => {
           resetForm();
         }}
       >
-        {({ values, handleChange }) => (
+        {({ values, handleChange, errors, touched, handleBlur }) => (
           <Form className="form">
             <Input
               id="country-input"
@@ -58,7 +58,9 @@ const AddCountry: FC = () => {
               name="country"
               value={values.country}
               handleChange={handleChange}
+              handleBlur={handleBlur}
               placeholder="China"
+              error={errors.country}
             />
             <div className="medals-inputs-wrapper">
               <Input
@@ -67,7 +69,9 @@ const AddCountry: FC = () => {
                 name="golden"
                 value={values.golden}
                 handleChange={handleChange}
+                handleBlur={handleBlur}
                 placeholder="0"
+                error={errors.golden && "Numbers only!"}
               />
               <Input
                 id="silver-medals-input"
@@ -75,7 +79,9 @@ const AddCountry: FC = () => {
                 name="silver"
                 value={values.silver}
                 handleChange={handleChange}
+                handleBlur={handleBlur}
                 placeholder="0"
+                error={errors.silver && "Numbers only!"}
               />
               <Input
                 id="bronze-medals-input"
@@ -83,10 +89,20 @@ const AddCountry: FC = () => {
                 name="bronze"
                 value={values.bronze}
                 handleChange={handleChange}
+                handleBlur={handleBlur}
                 placeholder="0"
+                error={errors.bronze && "Numbers only!"}
               />
             </div>
-            <button type="submit">ADD</button>
+            <button
+              type="submit"
+              disabled={
+                Object.entries(errors).length !== 0 ||
+                Object.entries(touched).length === 0
+              }
+            >
+              ADD
+            </button>
           </Form>
         )}
       </Formik>
