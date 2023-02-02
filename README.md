@@ -1,6 +1,17 @@
-### Recruitment task
+# Recruitment task
 
-How to get started:
+[Deployed on vercel](https://recruitment-task-eta.vercel.app/)
+
+## Stack & core dependecies:
+1. React,
+2. Typescript
+3. Vite
+4. Scss
+5. Redux toolkit
+6. Formik with Yup validation
+7. React modal
+
+## How to get started:
 
 Step 1
 
