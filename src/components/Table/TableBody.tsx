@@ -27,22 +27,19 @@ const TableBody: FC = () => {
     // gold > silver > bronze
     // E.g. - one gold medal is worth more
     // than any number of silver and bronze medals combined.
+
     if (orderingKey === "default") {
-      if (b.golden - a.golden > 0) return 1;
-      if (b.golden - a.golden < 0) return -1;
-      if (b.golden - a.golden === 0) {
-        // Same amout of gold medals. Compare silver.
-        if (b.silver - a.silver > 0) return 1;
-        if (b.silver - a.silver < 0) return -1;
-        if (b.silver - a.silver === 0) {
-          // Same amount of silver medals. Compare bronze.
-          if (b.bronze - a.bronze > 0) return 1;
-          if (b.bronze - a.bronze < 0) return -1;
-          // Same amount of bronze. Item is equal.
-          return 0;
-        }
+      const goldenResult = b.golden - a.golden;
+      // Same amount of gold medals, compare silver next.
+      if (goldenResult === 0) {
+        const silverResult = b.silver - a.silver;
+        // Same amount of silver, compare bronze.
+        if (silverResult === 0) return b.bronze - a.bronze;
+
+        return silverResult;
       }
-      return 0;
+
+      return goldenResult;
     }
 
     // Alphabetical ordering
