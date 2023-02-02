@@ -62,6 +62,7 @@ export interface Ordering {
 export interface TableState {
   countries: Country[];
   ordering: Ordering;
+  clickedCountry: Country | undefined;
 }
 
 const initialState: TableState = {
@@ -70,6 +71,7 @@ const initialState: TableState = {
     key: "default",
     type: "dsc",
   },
+  clickedCountry: undefined,
 };
 
 export const tableSlice = createSlice({
@@ -91,6 +93,14 @@ export const tableSlice = createSlice({
         (country) => country.id !== action.payload.id
       );
     },
+    editCountry: (state, action: PayloadAction<{ country: Country }>) => {
+      const payloadCountry = action.payload.country;
+
+      state.countries = state.countries.map((country) => {
+        if (country.id === payloadCountry.id) return payloadCountry;
+        return country;
+      });
+    },
     changeOrdering: (state, action: PayloadAction<{ ordering: Ordering }>) => {
       state.ordering = action.payload.ordering;
     },
@@ -100,15 +110,24 @@ export const tableSlice = createSlice({
     clearData: (state) => {
       state.countries = [];
     },
+    openModal: (state, action: PayloadAction<{ country: Country }>) => {
+      state.clickedCountry = action.payload.country;
+    },
+    closeModal: (state) => {
+      state.clickedCountry = undefined;
+    },
   },
 });
 
 export const {
   addCountry,
   removeCountry,
+  editCountry,
   changeOrdering,
   loadDemoData,
   clearData,
+  openModal,
+  closeModal,
 } = tableSlice.actions;
 
 export default tableSlice.reducer;
