@@ -85,8 +85,9 @@
 .table-body {
   & > tr {
     height: 4rem;
+    cursor: pointer;
     &:nth-child(odd) {
-      background-color: darken(theme.$white, 4%);
+      background-color: darken(theme.$white, 3%);
     }
 
     td {
@@ -95,10 +96,18 @@
       font-size: 1.8rem;
       font-weight: 300;
     }
+
+    &:not(.message-row):hover {
+      background-color: darken(theme.$white, 2%);
+    }
+    &:nth-child(odd):not(.message-row):hover {
+      background-color: darken(theme.$white, 5%);
+    }
   }
 
   & > tr.message-row {
     height: 10rem;
+    cursor: default;
   }
 }
 
