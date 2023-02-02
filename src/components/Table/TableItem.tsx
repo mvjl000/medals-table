@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useDispatch } from "react-redux";
-import { Country, removeCountry } from "../../store/tableSlice";
+import { Country, openModal, removeCountry } from "../../store/tableSlice";
 
 const TableItem: FC<{ data: Country; index: number }> = ({ data, index }) => {
   const dispatch = useDispatch();
@@ -10,7 +10,7 @@ const TableItem: FC<{ data: Country; index: number }> = ({ data, index }) => {
   };
 
   return (
-    <tr>
+    <tr onClick={() => dispatch(openModal({ country: data }))}>
       <td>{index + 1}.</td>
       <td>{data.country}</td>
       <td>{data.golden}</td>
