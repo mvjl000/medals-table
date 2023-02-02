@@ -64,9 +64,9 @@ const Modal: FC = () => {
             }}
             validationSchema={FormSchema}
             onSubmit={(values) => {
-              const golden = Number(values.golden) || 0;
-              const silver = Number(values.silver) || 0;
-              const bronze = Number(values.bronze) || 0;
+              const golden = Math.floor(Number(values.golden)) || 0;
+              const silver = Math.floor(Number(values.silver)) || 0;
+              const bronze = Math.floor(Number(values.bronze)) || 0;
 
               const formattedValues: Country = {
                 id: clickedCountry.id,

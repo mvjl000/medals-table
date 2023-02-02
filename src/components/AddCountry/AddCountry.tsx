@@ -34,9 +34,9 @@ const AddCountry: FC = () => {
         initialValues={initialValues}
         validationSchema={FormSchema}
         onSubmit={(values, { resetForm }) => {
-          const golden = Number(values.golden) || 0;
-          const silver = Number(values.silver) || 0;
-          const bronze = Number(values.bronze) || 0;
+          const golden = Math.floor(Number(values.golden)) || 0;
+          const silver = Math.floor(Number(values.silver)) || 0;
+          const bronze = Math.floor(Number(values.bronze)) || 0;
 
           const formattedValues = {
             ...values,
@@ -60,7 +60,7 @@ const AddCountry: FC = () => {
               handleChange={handleChange}
               handleBlur={handleBlur}
               placeholder="China"
-              error={errors.country}
+              error={touched.country ? errors.country : undefined}
             />
             <div className="medals-inputs-wrapper">
               <Input
