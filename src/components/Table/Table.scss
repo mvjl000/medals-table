@@ -101,3 +101,34 @@
     height: 10rem;
   }
 }
+
+.buttons-wrapper {
+  margin: 0 auto;
+  width: 95%;
+  max-width: 1400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+
+  @media (min-width: 1024px) {
+    justify-content: flex-end;
+    width: 80%;
+  }
+
+  button {
+    padding: 0.5rem 2rem;
+    font-size: 1.8rem;
+    border-color: transparent;
+    border-radius: 4px;
+    background-color: #eaf0ff;
+    color: #668fff;
+    cursor: pointer;
+    transition: background-color 0.1s;
+
+    &:hover,
+    &:focus-visible {
+      background-color: darken(#eaf0ff, 3%);
+    }
+  }
+}
