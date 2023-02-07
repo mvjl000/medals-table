@@ -1,6 +1,6 @@
 # Medals table
 
-[Deployed on vercel](https://recruitment-task-eta.vercel.app/)
+[Deployed on vercel](https://medals-table.vercel.app/)
 
 ## Stack & core dependecies:
 1. React,
