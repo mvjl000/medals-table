@@ -5,9 +5,7 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <>
       <header>
-        <p>
-          Medals Table <span>by Miłosz Piskadło</span>
-        </p>
+        <p>Medals Table</p>
       </header>
       <main>{children}</main>
     </>

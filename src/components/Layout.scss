@@ -11,17 +11,8 @@ header {
     font-size: 3.3rem;
     margin: 0;
 
-    span {
-      font-size: 1.4rem;
-      color: lighten(theme.$black, 30%);
-    }
-
     @media (min-width: 1024px) {
       font-size: 4rem;
-
-      span {
-        font-size: 2rem;
-      }
     }
   }
 }
