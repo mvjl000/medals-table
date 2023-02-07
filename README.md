@@ -1,4 +1,4 @@
-# Recruitment task
+# Medals table
 
 [Deployed on vercel](https://recruitment-task-eta.vercel.app/)
 
